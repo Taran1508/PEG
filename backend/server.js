@@ -17,9 +17,7 @@ app.use(
 );
 
 mongoose
-  .connect(
-    'mongodb+srv://.q0lfcwg.mongodb.net/PEG?retryWrites=true&w=majority&appName=Cluster1508'
-  )
+  .connect(`mongodb+srv://${PROCESS.env.MONGODB_URI}`)
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
