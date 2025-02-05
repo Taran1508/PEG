@@ -22,6 +22,7 @@ This project is a MERN-based authentication system that allows users to register
   - Node.js
   - Express.js
   - Mongoose
+  - concurrently
   - JSON Web Tokens (JWT)
   - Express Validator
   - CORS
@@ -49,14 +50,14 @@ cd your-repo-name
 ```
 
 ### Setup Frontend
-```
+```bash
 cd frontend
 npm install
 npm start
 ```
 
 ### Setup Backend
-```
+```bash
 cd backend
 npm install
 npm start
@@ -65,7 +66,7 @@ npm start
 ### Run Full Stack Application
 
 To start both frontend and backend concurrently:
-```
+```bash
 npm run dev
 ```
 
@@ -118,7 +119,7 @@ mern-auth-system/
 ## Environment Variables
 
 Create a .env file in the backend directory and set up the following variables:
-```
+```bash
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
