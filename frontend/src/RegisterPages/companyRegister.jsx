@@ -39,7 +39,7 @@ function ComapanyRegister() {
     console.log('Handle Click Invoked');
 
     try {
-      const response = await fetch('http://localhost:5000/register', {
+      const response = await fetch('http://localhost:5000/register/company', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

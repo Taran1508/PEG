@@ -38,14 +38,13 @@ function InvestorRegister() {
     console.log('Handle Click Invoked');
 
     try {
-      const response = await fetch('http://localhost:5000/register', {
+      const response = await fetch('http://localhost:5000/register/investor', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
-
       const res = await response.json();
       console.log('Response:', res);
     } catch (error) {

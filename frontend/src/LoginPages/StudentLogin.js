@@ -31,6 +31,7 @@ function StudentLogin() {
       email: email,
       password: password,
     };
+    console.log('Sending login data:', data);
     console.log('handleclick invoked');
 
     try {
