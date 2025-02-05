@@ -51,7 +51,7 @@ function CompanyLogin() {
   return (
     <>
       <nav>
-        <span className="logo">PEG</span>
+        <span className="logo">UDBHAVX</span>
         <ul className="navList">
           {navList.map((item, index) => (
             <li key={index}>{item}</li>
@@ -102,7 +102,14 @@ function CompanyLogin() {
         <Link to="/login/investor" className="login-Option">
           Login as Investor?
         </Link>
-        <a href="www.google.com">Forgot Password?</a>
+        <div className="lfp">
+          <a href="www.google.com" className="other">
+            Forgot Password?
+          </a>
+          <Link to="/register/company" className="others">
+            New User? Create your Account!
+          </Link>
+        </div>
         <Link to="/login/student" className="login-OptionReverse">
           Login as Student?
         </Link>
