@@ -1,5 +1,7 @@
 import { Link } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
 import './studentRegister.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ComapanyRegister() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
@@ -32,7 +34,7 @@ function ComapanyRegister() {
       email: email,
       companyName: formData.get('companyName'),
       regdno: formData.get('regdno'),
-      gstin: formData.get('gstin'),
+      num: formData.get('num'),
       password: password,
     };
 
@@ -48,7 +50,11 @@ function ComapanyRegister() {
       });
 
       const res = await response.json();
+      toast.success(res.message);
 
+      setTimeout(() => {
+        window.location.href = res.redirect;
+      }, 3000);
       console.log('Response:', res);
     } catch (error) {
       console.log('Error:', error);
@@ -57,6 +63,7 @@ function ComapanyRegister() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       <nav>
         <span className="logo">UDBHAVX</span>
         <ul className="navList">
@@ -99,11 +106,11 @@ function ComapanyRegister() {
             placeholder="Enter your Regd.no"
             required
           />
-          <label htmlFor="gstin">GSTIN.No</label>
+          <label htmlFor="num">Mobile No</label>
           <input
-            type="text"
-            name="gstin"
-            placeholder="Enter your GSTIN.No"
+            type="telephone"
+            name="num"
+            placeholder="Enter your Mobile No"
             required
           />
           <label htmlFor="password">Password</label>
@@ -120,7 +127,7 @@ function ComapanyRegister() {
       </div>
       <div className="forgotPassword">
         <Link to="/register/investor">Register as Investor?</Link>
-        <Link to="/register/student">Register as Student?</Link>
+        <Link to="/register/jobseeker">Register as Jobseeker?</Link>
       </div>
       <div className="rfooter">
         <span>Privacy Policy</span>

@@ -85,6 +85,11 @@ nav {
   margin-left: 60px;
 }
 
+.optionBoxes > button {
+  background-color: transparent;
+  outline: none;
+}
+
 .loginOption {
   color: white;
   display: flex;

@@ -1,5 +1,7 @@
 import { Link } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
 import './studentRegister.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function InvestorRegister() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
@@ -46,6 +48,11 @@ function InvestorRegister() {
         body: JSON.stringify(data),
       });
       const res = await response.json();
+      toast.success(res.message);
+
+      setTimeout(() => {
+        window.location.href = res.redirect;
+      }, 3000);
       console.log('Response:', res);
     } catch (error) {
       console.log('Error:', error);
@@ -54,6 +61,7 @@ function InvestorRegister() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       <nav>
         <span className="logo">UDBHAVX</span>
         <ul className="navList">

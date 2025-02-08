@@ -1,9 +1,10 @@
 import { Link } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
 import './studentRegister.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function StudentRegister() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
-  // const roles = ["Student","Investor","Company"]
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,8 +31,7 @@ function StudentRegister() {
     const data = {
       name: formData.get('name'),
       email: email,
-      collegeName: formData.get('collegeName'),
-      courseName: formData.get('courseName'),
+      num: formData.get('num'),
       linkedIn: formData.get('linkedIn'),
       password: password,
     };
@@ -48,6 +48,12 @@ function StudentRegister() {
       });
 
       const res = await response.json();
+      toast.success(res.message);
+
+      setTimeout(() => {
+        window.location.href = res.redirect;
+      }, 3000);
+
       console.log('Response:', res);
     } catch (error) {
       console.log('Error:', error);
@@ -56,6 +62,7 @@ function StudentRegister() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       <nav>
         <span className="logo">UDBHAVX</span>
         <ul className="navList">
@@ -84,18 +91,11 @@ function StudentRegister() {
             placeholder="Enter your Email"
             required
           />
-          <label htmlFor="collegeName">College Name</label>
+          <label htmlFor="num">Mobile No</label>
           <input
-            type="text"
-            name="collegeName"
-            placeholder="Enter your College Name"
-            required
-          />
-          <label htmlFor="courseName">Course</label>
-          <input
-            type="text"
-            name="courseName"
-            placeholder="Enter your Course Name"
+            type="telephone"
+            name="num"
+            placeholder="Enter your Mobile No"
             required
           />
           <label htmlFor="linkedIn">LinkedIn</label>

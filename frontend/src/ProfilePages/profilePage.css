@@ -1,0 +1,160 @@
+.heading {
+  color: white;
+}
+
+.profileFormBox {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  margin-left: 250px;
+  margin-bottom: 100px;
+}
+
+.profileForm {
+  display: flex;
+  justify-content: center;
+  width: 1000px;
+  border: 2px solid white;
+  padding-left: 20px;
+  padding-right: 35px;
+}
+
+.profileForm > h3 {
+  text-align: center;
+}
+
+.fieldSetOuterBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.fieldSetBox {
+  width: 310px;
+}
+
+fieldset > legend {
+  color: yellow;
+  font-weight: 600;
+}
+.fieldSetBox > label {
+  margin-right: 10px;
+  padding-left: 5px;
+}
+
+.fieldSetBox > input {
+  width: 300px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.skillsOuterBox {
+  display: flex;
+  border: 2px solid white;
+  margin-left: 2px;
+  width: 986px;
+  height: 250px;
+  margin-top: 20px;
+  padding: 10px;
+  gap: 10px;
+}
+.skillsInnerBox {
+  border: 2px solid white;
+  width: 490px;
+}
+
+.skillsInnerBox > h3 {
+  text-align: center;
+}
+
+.skillsInnerBox > label {
+  color: yellow;
+  margin-left: 12px;
+  margin-right: 10px;
+  padding-left: 5px;
+}
+
+.skillsInnerBox > input {
+  margin-left: 12px;
+  width: 450px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.finalOuterBox {
+  display: flex;
+  width: 1008px;
+  margin-top: 10px;
+  margin-left: 4px;
+  gap: 10px;
+}
+
+.finalInnerBox1 {
+  border: 2px solid white;
+  width: 495px;
+  height: 200px;
+  padding: 10px;
+  color: yellow;
+  font-size: 18px;
+}
+
+.finalInnerBox1 > input[type='checkbox'] {
+  width: 10px;
+  border-radius: 50px;
+}
+
+.finalInnerBox1 > h3 {
+  text-align: center;
+  color: white;
+}
+
+.finalInnerBox2 > h3 {
+  text-align: center;
+  color: white;
+}
+
+.finalInnerBox2 > input,
+select {
+  padding-left: 15px;
+}
+
+.submit {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 300px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 400px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(to right, green, yellow);
+}
+
+/* Investor Styles */
+
+.investorBox > form {
+  padding: 20px;
+}
+.fieldsetInv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.fieldSetBoxInv {
+  width: 500px;
+}
+
+.fieldSetBoxInv > label {
+  margin-right: 10px;
+  padding-left: 5px;
+}
+
+.fieldSetBoxInv > input {
+  width: 300px;
+  height: 25px;
+  border-radius: 10px;
+}
+
+.outerBoxInv {
+  display: flex;
+  flex-direction: row;
+}

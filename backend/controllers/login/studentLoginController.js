@@ -19,7 +19,11 @@ const studentLoginController = async (req, res) => {
       expiresIn: '2h',
     });
 
-    return res.status(200).json({ message: 'Login successful', token });
+    return res.status(200).json({
+      message: 'Login successful',
+      token,
+      redirect: '/profile/student',
+    });
   } catch (error) {
     console.error('Error during login:', error);
     return res.status(500).json({ message: 'Internal server error' });

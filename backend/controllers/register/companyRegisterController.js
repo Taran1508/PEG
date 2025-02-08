@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const companyRegisterController = async (req, res) => {
   try {
-    const { name, email, companyName, regdno, gstin, password } = req.body;
+    const { name, email, companyName, regdno, num, password } = req.body;
     const emailExists = await company.findOne({ email });
     if (emailExists) {
       return res.status(409).json({ message: 'User already exists' });
@@ -16,11 +16,13 @@ const companyRegisterController = async (req, res) => {
       email,
       companyName,
       regdno,
-      gstin,
+      num,
       password: hashedPassword,
     });
-    await newUser.save();
-    res.status(201).json({ message: 'newUser added', redirect: 'home' });
+    res.status(201).json({
+      message: `Congratulations ${name}, your account has been created!`,
+      redirect: '/login/company',
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

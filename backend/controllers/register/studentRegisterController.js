@@ -3,8 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const studentRegisterController = async (req, res) => {
   try {
-    const { name, email, collegeName, courseName, linkedIn, password } =
-      req.body;
+    const { name, email, collegeName, num, linkedIn, password } = req.body;
     const emailExists = await Student.findOne({ email });
     if (emailExists) {
       return res.status(409).json({ message: 'User already exists' });
@@ -16,12 +15,15 @@ const studentRegisterController = async (req, res) => {
       name,
       email,
       collegeName,
-      courseName,
+      num,
       linkedIn,
       password: hashedPassword,
     });
     await newUser.save();
-    res.status(201).json({ message: 'newUser added' });
+    res.status(201).json({
+      message: `Congratulations ${name}, your account has been created!`,
+      redirect: '/login/student',
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

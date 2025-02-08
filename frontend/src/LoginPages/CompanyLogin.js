@@ -1,10 +1,16 @@
 import { Link } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
 import './studentpage.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CompanyLogin() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
-  const optionList = ['Google', 'Facebook', 'Apple'];
+  const optionList = ['google', 'github', 'microsoft'];
   // const roles = ["Student","Investor","Company"]
+
+  const handleLogin = async (provider) => {
+    window.location.href = `http://localhost:5000/auth/${provider}`;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,6 +48,11 @@ function CompanyLogin() {
         body: JSON.stringify(data),
       });
       const res = await response.json();
+      toast.success(res.message);
+
+      setTimeout(() => {
+        window.location.href = res.redirect;
+      }, 3000);
       console.log('Response:', res);
     } catch (error) {
       console.error('Error:', error);
@@ -50,6 +61,7 @@ function CompanyLogin() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       <nav>
         <span className="logo">UDBHAVX</span>
         <ul className="navList">
@@ -87,13 +99,13 @@ function CompanyLogin() {
 
         <div className="optionBoxes">
           {optionList.map((item, index) => (
-            <a
-              href="www.google.com"
+            <button
               key={index}
               className={index % 2 === 0 ? 'loginOptionReverse' : 'loginOption'}
+              onClick={() => handleLogin(item)}
             >
-              SignIn with {item}
-            </a>
+              Sign In with {item.charAt(0).toUpperCase() + item.slice(1)}
+            </button>
           ))}
         </div>
       </div>
@@ -110,8 +122,8 @@ function CompanyLogin() {
             New User? Create your Account!
           </Link>
         </div>
-        <Link to="/login/student" className="login-OptionReverse">
-          Login as Student?
+        <Link to="/login/jobseeker" className="login-OptionReverse">
+          Login as Jobseeker?
         </Link>
       </div>
 

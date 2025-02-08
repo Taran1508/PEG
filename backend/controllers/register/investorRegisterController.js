@@ -22,8 +22,10 @@ const investorRegisterController = async (req, res) => {
     });
     await newUser.save();
 
-    res.status(201).json({ message: 'newUser added' });
-    // res.redirect('/login/investor');
+    res.status(201).json({
+      message: `Congratulations ${name}, your account has been created!`,
+      redirect: '/login/investor',
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -1,10 +1,10 @@
-
 function HomePage() {
-    return (
-        <>
-        <div>HomePage</div>
-        </>
-    )
-    
-    }
-    export default HomePage;
+  return (
+    <>
+      <div>
+        <h1 style={{ color: 'white' }}>Coming Soon!</h1>
+      </div>
+    </>
+  );
+}
+export default HomePage;
