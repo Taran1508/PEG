@@ -20,7 +20,7 @@ const studentProfile = require('./routes/profiles/studentProfileRoute');
 const investorProfile = require('./routes/profiles/investorProfileRoute');
 const companyProfile = require('./routes/profiles/companyProfileRoute');
 const jobseekerProfile = require('./routes/profiles/jobseekerProfileRoute');
-const founderProfile = require('./routes/profiles/jobseekerProfileRoute');
+const founderProfile = require('./routes/profiles/founderProfileRoute');
 const oAuthRoutes = require('./routes/oAuthRoutes');
 
 //dotenv config.

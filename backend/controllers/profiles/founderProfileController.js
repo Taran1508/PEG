@@ -6,19 +6,19 @@ const founderGetProile = (req, res) => {
 
 const founderPatchProfile = async (req, res) => {
   try {
-    if (req.body.preferred_startup_stages) {
-      if (req.body.preferred_startup_stages === 'on') {
-        req.body.preferred_startup_stages = true;
+    if (req.body.industry_domain) {
+      if (req.body.industry_domain === 'on') {
+        req.body.industry_domain = true;
       }
     }
-    if (req.body.mode_of_investment) {
-      if (req.body.mode_of_investment === 'on') {
-        req.body.mode_of_investment = true;
+    if (req.body.looking_for) {
+      if (req.body.looking_for === 'on') {
+        req.body.looking_for = true;
       }
     }
-    if (req.body.availability_for_mentorship) {
-      if (req.body.availability_for_mentorship === 'on') {
-        req.body.availability_for_mentorship = true;
+    if (req.body.skills_expertise) {
+      if (req.body.skills_expertise === 'on') {
+        req.body.skills_expertise = true;
       }
     }
 

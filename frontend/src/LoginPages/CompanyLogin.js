@@ -9,7 +9,10 @@ function CompanyLogin() {
   // const roles = ["Student","Investor","Company"]
 
   const handleLogin = async (provider) => {
-    window.location.href = `http://localhost:5000/auth/${provider}`;
+    const userType = 'company';
+    window.location.href = `http://localhost:5000/auth/${provider}?state=${encodeURIComponent(
+      userType
+    )}`;
   };
 
   const handleSubmit = async (event) => {
@@ -49,6 +52,9 @@ function CompanyLogin() {
       });
       const res = await response.json();
       toast.success(res.message);
+      if (res.token) {
+        localStorage.setItem('token', res.token);
+      }
 
       setTimeout(() => {
         window.location.href = res.redirect;

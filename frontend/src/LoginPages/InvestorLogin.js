@@ -9,7 +9,10 @@ function InvestorLogin() {
   // const roles = ["Student","Investor","Company"]
 
   const handleLogin = async (provider) => {
-    window.location.href = `http://localhost:5000/auth/${provider}`;
+    const userType = 'investor';
+    window.location.href = `http://localhost:5000/auth/${provider}?state=${encodeURIComponent(
+      userType
+    )}`;
   };
 
   const handleSubmit = async (event) => {

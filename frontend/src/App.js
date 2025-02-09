@@ -15,6 +15,9 @@ import JobseekerRegister from './RegisterPages/jobseekerRegister';
 import FounderRegister from './RegisterPages/founderRegister';
 import StudentProfilePage from './ProfilePages/studentProfilePage';
 import InvestorProfilePage from './ProfilePages/investorProfilePage';
+import CompanyProfilePage from './ProfilePages/companyProfilePage';
+import JobseekerProfilePage from './ProfilePages/jobseekerProfilePage';
+import FounderProfilePage from './ProfilePages/founderProfilePage';
 
 function App() {
   return (
@@ -26,20 +29,24 @@ function App() {
           {/* Student Routes */}
           <Route path="/login/student" element={<StudentLogin />} />
           <Route path="/register/student" element={<StudentRegister />} />
-          <Route path="/profile/investor" element={<InvestorProfilePage />} />
+          <Route path="/profile/student" element={<StudentProfilePage />} />
+
           {/* Investor Routes */}
           <Route path="/login/investor" element={<InvestorLogin />} />
           <Route path="/register/investor" element={<InvestorRegister />} />
-          <Route path="/profile/student" element={<StudentProfilePage />} />
+          <Route path="/profile/investor" element={<InvestorProfilePage />} />
           {/* Company Routes */}
           <Route path="/login/company" element={<CompanyLogin />} />
           <Route path="/register/company" element={<ComapanyRegister />} />
+          <Route path="/profile/company" element={<CompanyProfilePage />} />
           {/* Jobseeker Routes */}
           <Route path="/login/jobseeker" element={<JobseekerLogin />} />
           <Route path="/register/jobseeker" element={<JobseekerRegister />} />
+          <Route path="/profile/jobseeker" element={<JobseekerProfilePage />} />
           {/* Founder Routes */}
           <Route path="/login/founder" element={<FounderLogin />} />
           <Route path="/register/founder" element={<FounderRegister />} />
+          <Route path="/profile/founder" element={<FounderProfilePage />} />
         </Routes>
       </div>
     </Router>

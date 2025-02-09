@@ -39,11 +39,10 @@ router.get('/google/', (req, res, next) => {
   ) {
     return res.status(400).json({ error: `Invalid User ${userType}` });
   }
-  passport.authenticate('google', { scope: ['profile', 'email'] })(
-    req,
-    res,
-    next
-  );
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+    state: userType,
+  })(req, res, next);
 });
 router.get(
   '/google/callback',

@@ -52,18 +52,12 @@ const jobseekerSchema = new mongoose.Schema({
     personal_website: { type: String },
   },
 
-  looking_for: [
-    {
-      type: String,
-      enum: [
-        'Full-time',
-        'Part-time',
-        'Freelance projects',
-        'Startup',
-        'Learning & Teaching',
-      ],
-    },
-  ],
+  looking_for: {
+    internships: { type: Boolean, default: false },
+    freelance_projects: { type: Boolean, default: false },
+    startup: { type: Boolean, default: false },
+    learning_teaching: { type: Boolean, default: false },
+  },
 
   resume_upload: {
     type: String,

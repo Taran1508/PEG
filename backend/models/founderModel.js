@@ -47,7 +47,7 @@ const founderSchema = new mongoose.Schema({
   },
 
   pitch_deck: {
-    type: String, // Store PDF URL if uploaded
+    type: mongoose.Schema.Types.Mixed, // Store PDF URL if uploaded
   },
 
   funding_requirement: {

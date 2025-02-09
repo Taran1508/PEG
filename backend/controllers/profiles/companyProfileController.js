@@ -6,19 +6,14 @@ const companyGetProile = (req, res) => {
 
 const companyPatchProfile = async (req, res) => {
   try {
-    if (req.body.preferred_startup_stages) {
-      if (req.body.preferred_startup_stages === 'on') {
-        req.body.preferred_startup_stages = true;
+    if (req.body.hiring_for) {
+      if (req.body.hiring_for === 'on') {
+        req.body.hiring_for = true;
       }
     }
-    if (req.body.mode_of_investment) {
-      if (req.body.mode_of_investment === 'on') {
-        req.body.mode_of_investment = true;
-      }
-    }
-    if (req.body.availability_for_mentorship) {
-      if (req.body.availability_for_mentorship === 'on') {
-        req.body.availability_for_mentorship = true;
+    if (req.body.looking_for) {
+      if (req.body.looking_for === 'on') {
+        req.body.looking_for = true;
       }
     }
 

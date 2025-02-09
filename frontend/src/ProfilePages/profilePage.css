@@ -144,8 +144,8 @@ select {
 }
 
 .fieldSetBoxInv > label {
-  margin-right: 10px;
-  padding-left: 5px;
+  margin-right: 1px;
+  padding-left: 0px;
 }
 
 .fieldSetBoxInv > input {
@@ -157,4 +157,34 @@ select {
 .outerBoxInv {
   display: flex;
   flex-direction: row;
+}
+
+/* Company Styles */
+
+.fieldSetBoxCom {
+  width: 350px;
+}
+.fieldSetBoxComf {
+  width: 450px;
+}
+
+.fieldSetBoxCom > label {
+  margin-right: 10px;
+  padding-left: 5px;
+}
+
+.fieldSetBoxCom > input {
+  width: 320px;
+  height: 25px;
+  border-radius: 10px;
+}
+
+.funding {
+  margin-top: 10px;
+}
+
+.fundingSelect {
+  width: 250px;
+  height: 25px;
+  margin-bottom: 10px;
 }

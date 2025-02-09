@@ -14,20 +14,18 @@ const companySchema = new mongoose.Schema({
     default: 'Company',
   },
   company_details: {
-    website: { type: String, required: true },
-    industry: { type: String, required: true },
+    website: { type: String },
+    industry: { type: String },
   },
 
   company_size: {
     type: String,
     enum: ['1-10', '10-50', '50-200', '200+ employees'],
-    required: true,
   },
 
   stage_of_company: {
     type: String,
     enum: ['Idea Stage', 'MVP', 'Early Traction', 'Growth'],
-    required: true,
   },
 
   hiring_for: [
@@ -40,7 +38,6 @@ const companySchema = new mongoose.Schema({
   funding_status: {
     type: String,
     enum: ['Bootstrapped', 'Seed Funded', 'Series A', 'Series B+'],
-    required: true,
   },
 
   looking_for: [

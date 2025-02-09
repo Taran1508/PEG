@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 import './studentpage.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 function JobseekerLogin() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
   const optionList = ['google', 'github', 'microsoft'];
 
   const handleLogin = async (provider) => {
-    window.location.href = `http://localhost:5000/auth/${provider}`;
+    const userType = 'jobseeker';
+    window.location.href = `http://localhost:5000/auth/${provider}?state=${encodeURIComponent(
+      userType
+    )}`;
   };
 
   const handleSubmit = async (event) => {
@@ -49,6 +53,13 @@ function JobseekerLogin() {
         throw new Error('Login failed');
       }
       const res = await response.json();
+      toast.success(res.message);
+      if (res.token) {
+        localStorage.setItem('token', res.token);
+      }
+      setTimeout(() => {
+        window.location.href = res.redirect;
+      }, 3000);
       console.log('Response:', res);
     } catch (error) {
       console.error('Error:', error);
@@ -57,6 +68,7 @@ function JobseekerLogin() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       <nav>
         <span className="logo">UDBHAVX</span>
         <ul className="navList">

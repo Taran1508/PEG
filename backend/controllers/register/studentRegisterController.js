@@ -6,7 +6,9 @@ const studentRegisterController = async (req, res) => {
     const { name, email, collegeName, num, linkedIn, password } = req.body;
     const emailExists = await Student.findOne({ email });
     if (emailExists) {
-      return res.status(409).json({ message: 'User already exists' });
+      return res
+        .status(409)
+        .json({ message: 'User already exists', redirect: '/login/student' });
     }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);

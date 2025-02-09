@@ -125,7 +125,7 @@ function InvestorProfilePage() {
 
             <br />
 
-            <fieldset className="fieldsetInv">
+            <fieldset>
               <legend>Preferred Startup Stages:</legend>
               <label>
                 <input
@@ -174,7 +174,7 @@ function InvestorProfilePage() {
 
             <br />
 
-            <fieldset className="fieldsetInv">
+            <fieldset>
               <legend>Mode of Investment:</legend>
               <label>
                 <input

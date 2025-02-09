@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './studentpage.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 function FounderLogin() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
@@ -7,7 +8,10 @@ function FounderLogin() {
   // const roles = ["Student","Investor","Company"]
 
   const handleLogin = async (provider) => {
-    window.location.href = `http://localhost:5000/auth/${provider}`;
+    const userType = 'founder';
+    window.location.href = `http://localhost:5000/auth/${provider}?state=${encodeURIComponent(
+      userType
+    )}`;
   };
 
   const handleSubmit = async (event) => {
@@ -50,6 +54,13 @@ function FounderLogin() {
         throw new Error('Login failed');
       }
       const res = await response.json();
+      toast.success(res.message);
+      if (res.token) {
+        localStorage.setItem('token', res.token);
+      }
+      setTimeout(() => {
+        window.location.href = res.redirect;
+      }, 3000);
       console.log('Response:', res);
     } catch (error) {
       console.error('Error:', error);
@@ -58,6 +69,7 @@ function FounderLogin() {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       <nav>
         <span className="logo">UDBHAVX</span>
         <ul className="navList">
