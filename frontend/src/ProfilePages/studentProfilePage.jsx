@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import './profilePage.css';
 import { useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
-import SessionTrack from '../Config/sessionTrack';
+// import SessionTrack from '../Config/sessionTrack';
 
 function StudentProfilePage() {
   const navigate = useNavigate();
@@ -32,6 +32,43 @@ function StudentProfilePage() {
     };
     fetchToken();
   }, [navigate]);
+
+  const handlePfp = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    const fileInput = event.target.pfp.files[0];
+
+    if (!fileInput) {
+      console.error('No file selected!');
+      return;
+    }
+
+    formData.append('pfp', fileInput);
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        'http://localhost:5000/profile/student/pfp',
+        {
+          method: 'PATCH',
+          headers: {
+            Authorization: token,
+          },
+          body: formData,
+        }
+      );
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
+      const res = await response.json();
+      toast.success(res.message);
+      // setTimeout(() => {
+      //   window.location.href = res.redirect;
+      // }, 3000);
+      console.log('Response:', res);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -98,9 +135,9 @@ function StudentProfilePage() {
       }
       const res = await response.json();
       toast.success(res.message);
-      setTimeout(() => {
-        window.location.href = res.redirect;
-      }, 3000);
+      // setTimeout(() => {
+      //   window.location.href = res.redirect;
+      // }, 3000);
       console.log('Response:', res);
     } catch (error) {
       console.error('Error:', error);
@@ -109,14 +146,18 @@ function StudentProfilePage() {
 
   return (
     <>
-      <SessionTrack page="student" />
+      {/* <SessionTrack page="student" /> */}
       <ToastContainer position="top-right" autoClose={3000} />
       <div>
         <h1 className="heading">Complete your Student Profile</h1>
       </div>
       <div className="profileFormBox">
+        <form encType="multipart/form-data" onSubmit={handlePfp}>
+          <input type="file" name="pfp" accept="image/jpeg, image/jpg" />
+          <button type="submit">Save</button>
+        </form>
         <form
-          method="POST"
+          method="PATCH"
           encType="multipart/form-data"
           className="profileForm"
           onSubmit={handleSubmit}

@@ -39,4 +39,23 @@ const studentPatchProfile = async (req, res) => {
   }
 };
 
-module.exports = { studentGetProile, studentPatchProfile };
+const studentPatchPic = async (req, res) => {
+  try {
+    const updatedUser = await student.findByIdAndUpdate(
+      req.user._id,
+      { profilePicture: req.file.path },
+      { new: true }
+    );
+    res.json({
+      message: 'Profile Pic updated successfully',
+      filename: req.file.filename,
+      user: updatedUser,
+      redirect: '/profile/student',
+    });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+module.exports = { studentGetProile, studentPatchProfile, studentPatchPic };

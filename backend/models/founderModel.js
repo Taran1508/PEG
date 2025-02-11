@@ -10,7 +10,8 @@ const founderSchema = new mongoose.Schema({
 
   role: {
     type: String,
-    default: 'Founder',
+    enum: ['student', 'investor', 'company', 'jobseeker', 'founder'],
+    default: 'founder',
   },
   startup_stage: {
     type: String,
@@ -63,6 +64,7 @@ const founderSchema = new mongoose.Schema({
     instagram: { type: String },
     threads: { type: String },
   },
+  isLoggedIn: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model('Founder', founderSchema);

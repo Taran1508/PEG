@@ -22,6 +22,8 @@ const companyProfile = require('./routes/profiles/companyProfileRoute');
 const jobseekerProfile = require('./routes/profiles/jobseekerProfileRoute');
 const founderProfile = require('./routes/profiles/founderProfileRoute');
 const oAuthRoutes = require('./routes/oAuthRoutes');
+const logOut = require('./routes/logout');
+const getHome = require('./routes/home');
 
 //dotenv config.
 dotenv.config();
@@ -74,6 +76,9 @@ app.use('/profile/jobseeker', jobseekerProfile);
 app.use('/register/founder', founderRegister);
 app.use('/login/founder', founderLogin);
 app.use('/profile/founder', founderProfile);
+
+app.use('/logout', logOut);
+app.use('/home', getHome);
 
 app.use('/auth', oAuthRoutes);
 

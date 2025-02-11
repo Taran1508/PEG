@@ -19,7 +19,7 @@ const sendTokenResponse = (req, res) => {
     return res.status(400).json({ error: `Invalid user ${userType}` });
   }
   const token = jwt.sign(
-    { id: req.user.id, email: req.user.email, userType },
+    { id: req.user.id, email: req.user.email, role: userType },
     process.env.JWT_SECRET,
     { expiresIn: '1h' }
   );

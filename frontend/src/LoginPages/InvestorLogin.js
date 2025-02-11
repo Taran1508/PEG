@@ -2,10 +2,11 @@ import { Link } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import './studentpage.css';
 import 'react-toastify/dist/ReactToastify.css';
+import logo from './Your paragraph text (4).png';
 
 function InvestorLogin() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
-  const optionList = ['google', 'github', 'microsoft'];
+  const optionList = ['google', 'github'];
   // const roles = ["Student","Investor","Company"]
 
   const handleLogin = async (provider) => {
@@ -39,6 +40,7 @@ function InvestorLogin() {
     const data = {
       email: email,
       password: password,
+      role: 'investor',
     };
     console.log('handleclick invoked');
 
@@ -67,14 +69,15 @@ function InvestorLogin() {
   return (
     <>
       <ToastContainer position="top-right" autoClose={3000} />
-      <nav>
-        <span className="logo">UDBHAVX</span>
-        <ul className="navList">
+      <nav className="nav">
+        <span className="logo">
+          <img src={logo} alt="logo" className="logo" />
+        </span>
+        <ul className="navListL">
           {navList.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
-        <span className="signup">Sign In</span>
       </nav>
 
       <div className="LoginSub">Login into your Investor Account</div>

@@ -9,7 +9,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   color: white;
-  margin-top: 25px;
+  /* margin-top: 25px; */
 }
 .navList {
   display: flex;
@@ -32,7 +32,6 @@ nav {
 }
 
 .LoginSub {
-  margin-top: 50px;
   color: white;
   font-size: 40px;
   font-weight: 700;

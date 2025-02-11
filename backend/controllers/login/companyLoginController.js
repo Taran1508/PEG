@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const companyLoginController = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
     console.log('Login attempt:', email);
     const existingUser = await company.findOne({ email });
     if (!existingUser) {
@@ -17,17 +17,29 @@ const companyLoginController = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: 'Invalid credentials' });
 
-    const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, {
-      expiresIn: '2h',
-    });
+    const token = jwt.sign(
+      { id: existingUser._id, role: existingUser.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: '2h',
+      }
+    );
+    console.log(token, role, { user: existingUser.role });
 
-    return res
-      .status(200)
-      .json({
-        message: 'Login successful',
-        token,
-        redirect: '/profile/company',
-      });
+    let firstLogin = existingUser.isLoggedIn;
+    if (firstLogin) {
+      existingUser.isLoggedIn = false;
+      await existingUser.save();
+    }
+
+    return res.status(200).json({
+      message: 'Login successful',
+      role,
+      user: existingUser.role,
+      firstLogin,
+      token,
+      redirect: firstLogin ? '/profile/company' : '/home',
+    });
   } catch (error) {
     console.error('Error during login:', error);
     return res.status(500).json({ message: 'Internal server error' });

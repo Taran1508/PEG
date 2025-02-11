@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import './studentpage.css';
 import { toast, ToastContainer } from 'react-toastify';
+import logo from './Your paragraph text (4).png';
 
 function JobseekerLogin() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
-  const optionList = ['google', 'github', 'microsoft'];
+  const optionList = ['google', 'github'];
 
   const handleLogin = async (provider) => {
     const userType = 'jobseeker';
@@ -37,6 +38,7 @@ function JobseekerLogin() {
     const data = {
       email: email,
       password: password,
+      role: 'jobseeker',
     };
     console.log('Sending login data:', data);
     console.log('handleclick invoked');
@@ -69,14 +71,15 @@ function JobseekerLogin() {
   return (
     <>
       <ToastContainer position="top-right" autoClose={3000} />
-      <nav>
-        <span className="logo">UDBHAVX</span>
-        <ul className="navList">
+      <nav className="nav">
+        <span className="logo">
+          <img src={logo} alt="logo" className="logo" />
+        </span>
+        <ul className="navListL">
           {navList.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
-        <span className="signup">Sign In</span>
       </nav>
 
       <div className="LoginSub">Login into your Jobseeker Account</div>

@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import './studentpage.css';
 import { toast, ToastContainer } from 'react-toastify';
+import logo from './Your paragraph text (4).png';
 
 function FounderLogin() {
   const navList = ['Product', 'Resources', 'Support', 'Pricing', 'Blog'];
-  const optionList = ['google', 'github', 'microsoft'];
+  const optionList = ['google', 'github'];
   // const roles = ["Student","Investor","Company"]
 
   const handleLogin = async (provider) => {
@@ -38,6 +39,7 @@ function FounderLogin() {
     const data = {
       email: email,
       password: password,
+      role: 'founder',
     };
     console.log('Sending login data:', data);
     console.log('handleclick invoked');
@@ -70,14 +72,15 @@ function FounderLogin() {
   return (
     <>
       <ToastContainer position="top-right" autoClose={3000} />
-      <nav>
-        <span className="logo">UDBHAVX</span>
-        <ul className="navList">
+      <nav className="nav">
+        <span className="logo">
+          <img src={logo} alt="logo" className="logo" />
+        </span>
+        <ul className="navListL">
           {navList.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
-        <span className="signup">Sign In</span>
       </nav>
 
       <div className="LoginSub">Login into your Founder Account</div>

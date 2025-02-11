@@ -1,0 +1,13 @@
+.logoutButton {
+  height: 50px;
+  width: 350px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  box-sizing: border-box;
+  background: linear-gradient(to right, green, yellow);
+  border: none;
+  padding-left: 15px;
+  text-align: center;
+  cursor: pointer;
+}

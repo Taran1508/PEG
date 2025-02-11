@@ -9,7 +9,8 @@ const jobseekerSchema = new mongoose.Schema({
   password: { type: String },
   role: {
     type: String,
-    default: 'Jobseeker',
+    enum: ['student', 'investor', 'company', 'jobseeker', 'founder'],
+    default: 'jobseeker',
   },
   education_details: {
     graduation: {
@@ -66,6 +67,7 @@ const jobseekerSchema = new mongoose.Schema({
   availability: {
     notice_period: { type: String },
   },
+  isLoggedIn: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model('Jobseeker', jobseekerSchema);

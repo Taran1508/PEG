@@ -11,7 +11,8 @@ const companySchema = new mongoose.Schema({
   password: { type: String },
   role: {
     type: String,
-    default: 'Company',
+    enum: ['student', 'investor', 'company', 'jobseeker', 'founder'],
+    default: 'company',
   },
   company_details: {
     website: { type: String },
@@ -59,6 +60,7 @@ const companySchema = new mongoose.Schema({
     instagram: { type: String },
     threads: { type: String },
   },
+  isLoggedIn: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model('Company', companySchema);

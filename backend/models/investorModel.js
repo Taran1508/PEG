@@ -10,7 +10,8 @@ const investorSchema = new mongoose.Schema({
 
   role: {
     type: String,
-    default: 'Investor',
+    enum: ['student', 'investor', 'company', 'jobseeker', 'founder'],
+    default: 'investor',
   },
 
   investor_type: {
@@ -63,5 +64,6 @@ const investorSchema = new mongoose.Schema({
     instagram: { type: String },
     threads: { type: String },
   },
+  isLoggedIn: { type: Boolean, default: true },
 });
 module.exports = mongoose.model('Investor', investorSchema);

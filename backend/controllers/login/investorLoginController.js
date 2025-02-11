@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const investorLoginController = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
     console.log('Login attempt:', email);
     const existingUser = await investor.findOne({ email });
     if (!existingUser) {
@@ -16,14 +16,29 @@ const investorLoginController = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: 'Invalid credentials' });
 
-    const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, {
-      expiresIn: '2h',
-    });
+    const token = jwt.sign(
+      { id: existingUser._id, role: existingUser.role },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: '2h',
+      }
+    );
+
+    console.log(token, role, { user: existingUser.role });
+
+    let firstLogin = existingUser.isLoggedIn;
+    if (firstLogin) {
+      existingUser.isLoggedIn = false;
+      await existingUser.save();
+    }
 
     return res.status(200).json({
       message: 'Login successful',
+      role,
+      user: existingUser.role,
+      firstLogin,
       token,
-      redirect: '/profile/investor',
+      redirect: firstLogin ? '/profile/investor' : '/home',
     });
   } catch (error) {
     console.error('Error during login:', error);

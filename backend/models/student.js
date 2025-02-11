@@ -9,9 +9,10 @@ const studentSchema = new mongoose.Schema({
 
   role: {
     type: String,
-    default: 'Student',
+    enum: ['student', 'investor', 'company', 'jobseeker', 'founder'],
+    default: 'student',
   },
-
+  profilePicture: { type: String },
   // Education Details
   education: {
     graduation: {
@@ -62,7 +63,8 @@ const studentSchema = new mongoose.Schema({
   },
 
   // Employment Availability
-  availability: { type: String }, // Fulltime, Parttime, Freelance
+  availability: { type: String },
+  isLoggedIn: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model('Student', studentSchema);

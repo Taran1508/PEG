@@ -4,26 +4,38 @@
 body {
   background-color: rgb(23, 23, 23);
 }
-nav {
+.nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   color: white;
-  margin-top: 25px;
+  /* margin-top: 25px; */
 }
-.navList {
+.navListL {
   display: flex;
-  margin-left: 60px;
+  margin-left: 300px;
 }
-.navList > li {
+.navListL > li {
   margin-left: 40px;
   font-size: 14px;
 }
 
 .logo {
-  margin-left: 60px;
-  font-size: 24px;
-  font-weight: 700;
+  display: flex; /* Ensures proper alignment */
+  align-items: center; /* Centers the image vertically */
+  justify-content: center;
+  width: 150px; /* Centers the image horizontally */
+  height: 150px;
+  background: transparent; /* Adjust height as needed */
+}
+
+.logo > img {
+  height: 100%;
+  width: auto; /* Maintains aspect ratio */
+  max-height: 100%; /* Prevents overflow */
+  object-fit: contain;
+  filter: brightness(0.7) contrast(1.5);
+  mix-blend-mode: screen; /* Ensures image fits well */
 }
 
 .signup {
@@ -32,7 +44,6 @@ nav {
 }
 
 .LoginSub {
-  margin-top: 70px;
   color: white;
   font-size: 40px;
   font-weight: 700;
