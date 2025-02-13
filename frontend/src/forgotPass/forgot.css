@@ -1,0 +1,48 @@
+.forgotBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.forgotBox > h1 {
+  color: white;
+}
+
+.formBox {
+  margin-top: 20px;
+}
+
+.formBox > label {
+  font-size: 16px;
+  color: yellow;
+  margin-left: 10px;
+}
+.formBox > input {
+  width: 350px;
+  height: 35px;
+  border: 2px solid;
+  /* border-image: linear-gradient(to right, green, yellow) 1; */
+  border-radius: 10px;
+  outline-color: linear-gradient(to right, green, yellow) 1;
+  padding-left: 10px;
+  box-sizing: border-box;
+  background-color: rgb(207, 207, 207);
+}
+
+.saveB {
+  height: 30px;
+  width: 150px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  box-sizing: border-box;
+  background: linear-gradient(to right, green, yellow);
+  border-radius: 10px;
+  padding-right: 16px;
+  text-align: center;
+  cursor: pointer;
+}

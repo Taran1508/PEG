@@ -36,6 +36,9 @@ const companySchema = new mongoose.Schema({
     },
   ],
 
+  resetToken: { type: String },
+  resetTokenExpires: { type: Date },
+
   funding_status: {
     type: String,
     enum: ['Bootstrapped', 'Seed Funded', 'Series A', 'Series B+'],

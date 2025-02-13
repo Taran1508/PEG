@@ -2,11 +2,121 @@
   color: white;
 }
 
+/* Center the container */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #181818; /* Dark mode */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Profile Picture */
+.profile-pic-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2d2d2d;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Upload Form */
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.upload-form-res {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  margin-left: 140px;
+}
+
+/* File Upload Button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.custom-file-uploadres {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.custom-file-upload:hover {
+  background-color: #45a049;
+}
+
+/* Hide the default file input */
+input[type='file'] {
+  display: none;
+}
+
+/* Save Button */
+.upload-form button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: none;
+  background-color: #2196f3;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.upload-form button:hover {
+  background-color: #1976d2;
+}
+
+.upload-form-res button {
+  padding: 4px 7px;
+  border: none;
+  background-color: #2196f3;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.upload-form button:hover {
+  background-color: #1976d2;
+}
+
 .profileFormBox {
   display: flex;
   align-items: center;
-  justify-content: baseline;
-  margin-left: 250px;
+  flex-direction: column;
+  justify-content: center;
   margin-bottom: 100px;
 }
 

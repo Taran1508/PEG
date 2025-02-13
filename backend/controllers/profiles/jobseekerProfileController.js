@@ -38,4 +38,49 @@ const jobseekerPatchProfile = async (req, res) => {
   }
 };
 
-module.exports = { jobseekerGetProile, jobseekerPatchProfile };
+const jobseekerPatchPic = async (req, res) => {
+  try {
+    const updatedUser = await jobseeker.findByIdAndUpdate(
+      req.user._id,
+      { profilePicture: req.file.path },
+      { new: true }
+    );
+    res.json({
+      message: 'Profile Pic updated successfully',
+      filename: req.file.filename,
+      imageUrl: req.file.path,
+      user: updatedUser,
+      redirect: '/profile/jobseeker',
+    });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+const jobseekerPatchRes = async (req, res) => {
+  try {
+    const updatedUser = await jobseeker.findByIdAndUpdate(
+      req.user._id,
+      { resume_upload: req.file.path },
+      { new: true }
+    );
+    res.json({
+      message: 'Resume Uploaded successfully',
+      filename: req.file.filename,
+      resUrl: req.file.path,
+      user: updatedUser,
+      redirect: '/profile/jobseeker',
+    });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+module.exports = {
+  jobseekerGetProile,
+  jobseekerPatchProfile,
+  jobseekerPatchPic,
+  jobseekerPatchRes,
+};

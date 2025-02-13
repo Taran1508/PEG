@@ -26,6 +26,7 @@ body {
   justify-content: center;
   width: 150px; /* Centers the image horizontally */
   height: 150px;
+  margin-left: 40px;
   background: transparent; /* Adjust height as needed */
 }
 

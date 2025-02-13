@@ -7,7 +7,9 @@ const investorRegisterController = async (req, res) => {
     const { name, email, num, linkedIn, password } = req.body;
     const emailExists = await investor.findOne({ email });
     if (emailExists) {
-      return res.status(400).json({ message: 'User already exists' });
+      return res
+        .status(400)
+        .json({ message: 'User already exists', redirect: '/login/investor' });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -27,7 +29,9 @@ const investorRegisterController = async (req, res) => {
       redirect: '/login/investor',
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res
+      .status(500)
+      .json({ error: error.message, redirect: '/register/investor' });
   }
 };
 

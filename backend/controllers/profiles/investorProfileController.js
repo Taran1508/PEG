@@ -38,4 +38,23 @@ const investorPatchProfile = async (req, res) => {
   }
 };
 
-module.exports = { investorGetProile, investorPatchProfile };
+const investorPatchPic = async (req, res) => {
+  try {
+    const updatedUser = await investor.findByIdAndUpdate(
+      req.user._id,
+      { profilePicture: req.file.path },
+      { new: true }
+    );
+    res.json({
+      message: 'Profile Pic updated successfully',
+      filename: req.file.filename,
+      user: updatedUser,
+      redirect: '/profile/investor',
+    });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+module.exports = { investorGetProile, investorPatchProfile, investorPatchPic };

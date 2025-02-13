@@ -17,22 +17,21 @@ const investorSchema = new mongoose.Schema({
   investor_type: {
     type: String,
     enum: ['Angel Investor', 'Venture Capitalist', 'Corporate VC', 'Govt Fund'],
-    required: true,
   },
 
   investment_range: {
     type: String,
     enum: ['₹5L - ₹50L', '₹50L - ₹2Cr', '₹2Cr+'],
-    required: true,
   },
 
   preferred_startup_stages: [
     {
       type: String,
       enum: ['Idea', 'MVP', 'Growth', 'Scale-up'],
-      required: true,
     },
   ],
+  resetToken: { type: String },
+  resetTokenExpires: { type: Date },
 
   industries_interested_in: [{ type: String }],
 
@@ -47,7 +46,6 @@ const investorSchema = new mongoose.Schema({
     {
       type: String,
       enum: ['Equity', 'Debt', 'Convertible Note', 'Grants'],
-      required: true,
     },
   ],
 

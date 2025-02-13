@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import './profilePage.css';
 import { useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import SessionTrack from '../Config/sessionTrack';
 
 function CompanyProfilePage() {
+  const imageRef = useRef(null);
+
   const navigate = useNavigate();
   useEffect(() => {
     const fetchToken = async () => {
@@ -32,6 +34,50 @@ function CompanyProfilePage() {
     };
     fetchToken();
   }, [navigate]);
+
+  const handlePfp = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    const fileInput = event.target.pfp.files[0];
+
+    if (!fileInput) {
+      console.error('No file selected!');
+      return;
+    }
+
+    if (fileInput) {
+      const imageUrl = URL.createObjectURL(fileInput);
+      imageRef.current.src = imageUrl;
+    }
+
+    formData.append('pfp', fileInput);
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        'http://localhost:5000/profile/student/pfp',
+        {
+          method: 'PATCH',
+          headers: {
+            Authorization: token,
+          },
+          body: formData,
+        }
+      );
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
+      const res = await response.json();
+      //imageRef.current.src = `http://localhost:5000/${res.imageUrl}`;
+      toast.success(res.message);
+      // setTimeout(() => {
+      //   window.location.href = res.redirect;
+      // }, 3000);
+      console.log('Response:', res);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -98,6 +144,28 @@ function CompanyProfilePage() {
         <h1 className="heading">Complete your Company Profile</h1>
       </div>
       <div className="profileFormBox">
+        <div className="profile-container">
+          <div className="profile-pic-wrapper">
+            <img
+              ref={imageRef}
+              src="default-avatar.jpg"
+              alt="Profile"
+              className="profile-pic"
+            />
+          </div>
+
+          <form
+            className="upload-form"
+            encType="multipart/form-data"
+            onSubmit={handlePfp}
+          >
+            <label className="custom-file-upload">
+              <input type="file" name="pfp" accept="image/jpeg, image/jpg" />
+              Choose File
+            </label>
+            <button type="submit">Save</button>
+          </form>
+        </div>
         <form
           method="POST"
           encType="multipart/form-data"

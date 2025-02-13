@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const dotenv = require('dotenv');
 const passport = require('./config/passportConfig');
+
 //Import Routes
 const studentRegister = require('./routes/register/studentregister');
 const studentLogin = require('./routes/login/studentLoginRoute');
@@ -24,6 +25,8 @@ const founderProfile = require('./routes/profiles/founderProfileRoute');
 const oAuthRoutes = require('./routes/oAuthRoutes');
 const logOut = require('./routes/logout');
 const getHome = require('./routes/home');
+const forgotPassword = require('./routes/forgotPasswordRoute');
+const resetPassword = require('./routes/resetPassword');
 
 //dotenv config.
 dotenv.config();
@@ -81,6 +84,8 @@ app.use('/logout', logOut);
 app.use('/home', getHome);
 
 app.use('/auth', oAuthRoutes);
+app.use('/forgot-password', forgotPassword);
+app.use('/reset-password', resetPassword);
 
 app.get('/', (req, res) => {
   res.send('Hello from server');

@@ -33,4 +33,23 @@ const companyPatchProfile = async (req, res) => {
   }
 };
 
-module.exports = { companyGetProile, companyPatchProfile };
+const companyPatchPic = async (req, res) => {
+  try {
+    const updatedUser = await company.findByIdAndUpdate(
+      req.user._id,
+      { profilePicture: req.file.path },
+      { new: true }
+    );
+    res.json({
+      message: 'Profile Pic updated successfully',
+      filename: req.file.filename,
+      user: updatedUser,
+      redirect: '/profile/company',
+    });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+module.exports = { companyGetProile, companyPatchProfile, companyPatchPic };

@@ -60,6 +60,8 @@ const jobseekerSchema = new mongoose.Schema({
     learning_teaching: { type: Boolean, default: false },
   },
 
+  resetToken: { type: String },
+  resetTokenExpires: { type: Date },
   resume_upload: {
     type: String,
   },

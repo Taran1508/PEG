@@ -38,4 +38,23 @@ const founderPatchProfile = async (req, res) => {
   }
 };
 
-module.exports = { founderGetProile, founderPatchProfile };
+const founderPatchPic = async (req, res) => {
+  try {
+    const updatedUser = await founder.findByIdAndUpdate(
+      req.user._id,
+      { profilePicture: req.file.path },
+      { new: true }
+    );
+    res.json({
+      message: 'Profile Pic updated successfully',
+      filename: req.file.filename,
+      user: updatedUser,
+      redirect: '/profile/founder',
+    });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+module.exports = { founderGetProile, founderPatchProfile, founderPatchPic };

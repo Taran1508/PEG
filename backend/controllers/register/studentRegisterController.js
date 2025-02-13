@@ -27,7 +27,9 @@ const studentRegisterController = async (req, res) => {
       redirect: '/login/student',
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res
+      .status(500)
+      .json({ error: error.message, redirect: '/register/student' });
   }
 };
 

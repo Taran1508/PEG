@@ -55,7 +55,8 @@ const founderSchema = new mongoose.Schema({
     type: String,
     enum: ['Bootstrapped', 'Looking for Angel Investment', 'VC funding'],
   },
-
+  resetToken: { type: String },
+  resetTokenExpires: { type: Date },
   social_links: {
     github: { type: String },
     linkedin: { type: String },

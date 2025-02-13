@@ -55,11 +55,12 @@ const studentSchema = new mongoose.Schema({
     startup: { type: Boolean, default: false },
     learning_teaching: { type: Boolean, default: false },
   },
+  resetToken: { type: String },
+  resetTokenExpires: { type: Date },
 
   // Resume Upload (PDF format)
-  resume: {
-    pdf_url: { type: String },
-    uploaded_at: { type: Date },
+  resume_upload: {
+    type: String,
   },
 
   // Employment Availability

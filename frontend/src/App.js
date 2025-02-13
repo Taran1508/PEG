@@ -9,6 +9,7 @@ import HomePage from './HomePage/HomePage';
 import StudentRegister from './RegisterPages/StudentRegister';
 import ComapanyRegister from './RegisterPages/companyRegister';
 import InvestorRegister from './RegisterPages/investorRegister';
+import RbacRegister from './RegisterPages/rbacRegistration.jsx';
 import JobseekerLogin from './LoginPages/JobseekerLogin';
 import FounderLogin from './LoginPages/FounderLogin';
 import JobseekerRegister from './RegisterPages/jobseekerRegister';
@@ -18,6 +19,8 @@ import InvestorProfilePage from './ProfilePages/investorProfilePage';
 import CompanyProfilePage from './ProfilePages/companyProfilePage';
 import JobseekerProfilePage from './ProfilePages/jobseekerProfilePage';
 import FounderProfilePage from './ProfilePages/founderProfilePage';
+import ForgotPassword from './forgotPass/forgotPassword.jsx';
+import ResetPassword from './forgotPass/resetPassword.jsx';
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
         <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/register" element={<RbacRegister />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
           {/* Student Routes */}
           <Route path="/login/student" element={<StudentLogin />} />
           <Route path="/register/student" element={<StudentRegister />} />

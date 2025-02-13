@@ -14,6 +14,12 @@ function LandingPage() {
           <li>
             <Link to="/register/student">Register</Link>
           </li>
+          <li>
+            <Link to="/register">RBAC</Link>
+          </li>
+          <li>
+            <Link to="/forgot-password">Forgot-password</Link>
+          </li>
         </ul>
       </nav>
     </>
